@@ -49,12 +49,13 @@ create table ActorAward{
 
 
 CREATE TABLE Episodes (
-	EpisodeId char(9) PRIMARY KEY,
+	EpisodeId char(9),
 	TVSeriesId char(9) REFERENCES TVSeries (TVId) ON DELETE CASCADE ON UPDATE CASCADE,
 	Title varchar,
-	SeasonNo integer CHECK(SeasonNo >= 1) ,
+	SeasonNo integer CHECK(SeasonNo >= 1),
 	EpisodeNo integer CHECK(EpisodeNo >= 1),
-	Rating real
+	Rating real,
+	PRIMARY KEY (EpisodeID, TVSeriesId)
 );
 
 CREATE TABLE Actor (
