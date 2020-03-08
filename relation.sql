@@ -47,3 +47,40 @@ create table ActorAward{
     PRIMARY KEY(MovieID,PersonID,AwardName,AwardType)
 }
 
+
+CREATE TABLE Episodes (
+	EpisodeId char(9) PRIMARY KEY,
+	TVSeriesId char(9) REFERENCES TVSeries (TVId) ON DELETE CASCADE ON UPDATE CASCADE,
+	Title varchar,
+	SeasonNo integer CHECK(SeasonNo >= 1) ,
+	EpisodeNo integer CHECK(EpisodeNo >= 1),
+	Rating real
+);
+
+CREATE TABLE Actor (
+	PersonID char(9) PRIMARY KEY REFERENCES Person (PersonID) ON DELETE CASCADE ON UPDATE CASCADE
+);
+
+CREATE TABLE Crew (
+	PersonID char(9) REFERENCES Person (PersonID) ON DELETE CASCADE ON UPDATE CASCADE,
+	Type integer,
+	PRIMARY KEY (PersonID, Type)
+);
+
+CREATE TABLE Director (
+	PersonID char(9) PRIMARY KEY REFERENCES Person (PersonID) ON DELETE CASCADE ON UPDATE CASCADE
+);
+
+CREATE TABLE TV_Actor (
+	PersonID char(9) PRIMARY KEY REFERENCES Person (PersonID) ON DELETE CASCADE ON UPDATE CASCADE
+);
+
+CREATE TABLE TV_Crew (
+	PersonID char(9) REFERENCES Person (PersonID) ON DELETE CASCADE ON UPDATE CASCADE,
+	Type integer,
+	PRIMARY KEY (PersonID, Type)
+);
+
+CREATE TABLE TV_Director (
+	PersonID char(9) PRIMARY KEY REFERENCES Person (PersonID) ON DELETE CASCADE ON UPDATE CASCADE
+);
