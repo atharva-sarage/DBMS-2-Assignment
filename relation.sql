@@ -1,3 +1,4 @@
+--Strong entities
 -- check multivalued attributes
 CREATE TABLE Person (
 	PersonID char(9),
@@ -54,57 +55,57 @@ CREATE TABLE Genre (
   PRIMARY KEY (genre)
 );
 
-
-create table actorMovie {
+--Relations
+create table actorMovie (
   MovieID char(9) references movie(MovieID) ON DELETE CASCADE ON UPDATE CASCADE ,
   PersonID char(9) references person(PersonID) ON DELETE CASCADE ON UPDATE CASCADE,
   Name varchar,     
   PRIMARY KEY(MovieID,PersonID)
-};
-create table directorMovie {
+);
+create table directorMovie (
   MovieID char(9) references movie(MovieID) ON DELETE CASCADE ON UPDATE CASCADE ,
   PersonID char(9) references person(PersonID) ON DELETE CASCADE ON UPDATE CASCADE ,
   PRIMARY KEY(MovieID,PersonID)  
-};
-create table crewMovie {
+);
+create table crewMovie (
   MovieID char(9) references movie(MovieID) ON DELETE CASCADE ON UPDATE CASCADE ,
   PersonID char(9) references person(PersonID) ON DELETE CASCADE ON UPDATE CASCADE ,
   Type INT,
   PRIMARY KEY(MovieID,PersonID,Type)
-};
-create table EpisodeTVSeries {
+);
+create table EpisodeTVSeries (
     MovieID char(9) references movie(MovieID) ON DELETE CASCADE ON UPDATE CASCADE ,
     EpisodeID char(9) references episode(EpisodeID) ON DELETE CASCADE ON UPDATE CASCADE,
     PRIMARY KEY(MovieID,PersonID)    
-};
-create table RegionMovie{
+);
+create table RegionMovie (
   MovieID char(9) references movie(MovieID) ON DELETE CASCADE ON UPDATE CASCADE,
   RegionName varchar references region(RegionName) ON DELETE CASCADE ON UPDATE CASCADE,
   Runtime INT,
   StartDate varchar,
   EndDate varchar
   PRIMARY KEY(MovieID,RegionName)
-};
-create table movieGenre{
+);
+create table movieGenre (
     MovieID char(9) references movie(MovieID) ON DELETE CASCADE ON UPDATE CASCADE,
     Genre varchar references genre(Genre) ON DELETE CASCADE ON UPDATE CASCADE,
     PRIMARY KEY(MovieID,Genre)
-};
-create table productionCompanyMovie{
+);
+create table productionCompanyMovie (
     MovieID char(9) references movie(MovieID) ON DELETE CASCADE ON UPDATE CASCADE,
     CompanyName varchar references productionComany(CompanyName) ON DELETE CASCADE ON UPDATE CASCADE,
     PRIMARY KEY(MovieID,CompanyName)
-};
+);
 -- need to confirm this Actor Award
-create table ActorAward{
-    AwardName varchar references award(AwardName) ON DELETE CASCADE ON UPDATE CASCADE,
-    MovieID char(9) references movie(MovieID) ON DELETE CASCADE ON UPDATE CASCADE,
-    PersonID char(9) references person(PersonID) ON DELETE CASCADE ON UPDATE CASCADE,
+create table ActorAward (
+    AwardName varchar references Award(AwardName) ON DELETE CASCADE ON UPDATE CASCADE,
+    MovieID char(9) references Movie(MovieID) ON DELETE CASCADE ON UPDATE CASCADE,
+    PersonID char(9) references Person(PersonID) ON DELETE CASCADE ON UPDATE CASCADE,
     AwardType INT PRIMARY KEY,
     PRIMARY KEY(MovieID,PersonID,AwardName,AwardType)
-}
+);
 
-
+--Weak Entities
 CREATE TABLE Episodes (
 	EpisodeId char(9),
 	TVSeriesId char(9) REFERENCES TVSeries (TVID) ON DELETE CASCADE ON UPDATE CASCADE,
