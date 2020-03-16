@@ -1,0 +1,42 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{hyperref}
+
+\title{CS3563: DBMS II \\ Assignment 2}
+\author{\Large Ajinkya Bokade - CS17BTECH11001 \\ \Large Atharva Sarage - CS17BTECH11005 \\ \Large Shivashish Suman - CS17BTECH11037 }
+\date{}
+\begin{document}
+
+\maketitle
+
+\section{Introduction}
+\Large In this assignment, we have used IMDB dataset \\
+(\href{https://datasets.imdbws.com/}{https://datasets.imdbws.com/}) to populate our database\\ and PostgreSQL as the RDBMS for piping in the data.
+
+\section{List of DB Files}
+\begin{itemize}
+	\item \textbf{person} - Contains the person id, name, birth year and death year.
+	\item \textbf{movie\_entity} - 
+	\item \textbf{genreMovie} -
+	\item \textbf{directorMovie} -
+	\item \textbf{actorMovie} -
+	\item \textbf{crewMovie} -
+	\item \textbf{movies\_titles} -
+	\item \textbf{regionMovie} -
+	\item \textbf{tv\_series\_entity} -
+	\item \textbf{genreTV} -
+	\item \textbf{directorTV} -
+	\item \textbf{actorTV} -
+	\item \textbf{crewTV} -
+	\item \textbf{tv\_series\_titles} -
+	\item \textbf{episodes\_entity} -
+	\item \textbf{genreIDD} -
+	\item \textbf{directorEpisode} -
+	\item \textbf{actorEpisode} -
+	\item \textbf{crewEpisode} -
+	\item \textbf{episode\_titles} -
+	\item \textbf{regionEpsiode} -
+	
+\end{itemize}
+
+\end{document}
